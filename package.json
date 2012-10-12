@@ -1,0 +1,22 @@
+{
+  "name": "marauders-map",
+  "version": "0.0.1",
+  "description": "service port announcer and finder",
+  "main": "map.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ramitos/marauders-map.git"
+  },
+  "keywords": [
+    "port",
+    "service",
+    "announcement",
+    "discovery"
+  ],
+  "author": "Sérgio Ramos <mail@sergioramos.me>",
+  "license": "FreeBSD",
+  "dependencies": {
+    "axon": "0.3.x",
+    "async": "0.1.x"
+  }
+}
