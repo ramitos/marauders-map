@@ -1,6 +1,6 @@
 {
   "name": "marauders-map",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "service port announcer and finder",
   "main": "map.js",
   "repository": {
