@@ -22,5 +22,11 @@
   },
   "devDependencies": {
     "specced": "0.0.x"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/runner.js"
   }
 }
