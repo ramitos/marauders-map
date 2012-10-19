@@ -1,5 +1,4 @@
 var async = require('async'),
-    request = require('request'),
     assert = require('assert')
 
 var requests = require('../config/requests.json')
