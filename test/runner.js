@@ -28,8 +28,8 @@ test.specs = {
 test.run(function (e) {
   if(e) throw e
   console.log('something went wrong')
-  process.kill()
+  process.exit(1)
 }, function () {
   console.log('all tests passed')
-  process.kill()
+  process.exit(0)
 })
