@@ -4,7 +4,7 @@ var interpolate = require('util').format,
     url = require('url'),
     uri = require('URIjs')
 
-module.exports.subdomain = function (req, nodes, callback) {
+var subdomain = function (req, nodes, callback) {
   var subdomain = new uri(interpolate('http://%s', req.headers.host)).subdomain()
   var matches = new Array()
   var all = nodes.slice()
@@ -15,10 +15,10 @@ module.exports.subdomain = function (req, nodes, callback) {
   })
   
   if(matches.length === 1) callback(matches.shift())
-  else module.exports.route(req, matches, callback)
+  else route(req, matches, callback)
 }
 
-module.exports.route = function (req, nodes, callback) {
+var route = function (req, nodes, callback) {
   var fallback = unrouted(nodes)
 
   
@@ -62,3 +62,5 @@ var unrouted = function (nodes) {
   
   return returns
 }
+
+module.exports = subdomain

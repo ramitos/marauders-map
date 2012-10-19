@@ -27,8 +27,5 @@ var seek = function (sock) {
 seek.prototype.seek = function (req, callback) {
   var self = this
   
-  match.subdomain(req, self.anodes, function (node) {
-    if(node) callback(node)
-    else match.route(req, self.anodes, callback)
-  })
+  match(req, self.anodes, callback)
 }
