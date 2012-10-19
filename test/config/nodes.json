@@ -1,0 +1,42 @@
+[
+  {
+    "name": "d",
+    "subdomain": "B0GXPEPtMJ",
+    "port": 8147
+  },
+  {
+    "name": "h",
+    "subdomain": "B0GXPEPtMJ",
+    "routes": [
+      {"/:method/:number": ["get", "post", "delete"]},
+      {"/:method": ["put"]}
+    ],
+    "port": 8047
+  },
+  {
+    "name": "f",
+    "subdomain": "zmeyyjxusi",
+    "routes": [
+      {"/:method/:number": ["get", "post", "delete"]},
+      {"/:method": ["put"]}
+    ],
+    "port": 6078
+  },
+  {
+    "name": "e",
+    "routes": [
+      {"/:method/:number": ["get", "post", "delete"]},
+      {"/:method": ["put"]}
+    ],
+    "port": 5237
+  },
+  {
+    "name": "t",
+    "routes": ["/"],
+    "port": 3617
+  },
+  {
+    "name": "g",
+    "port": 9508
+  }
+]

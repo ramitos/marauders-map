@@ -1,6 +1,6 @@
 {
   "name": "marauders-map",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "service port announcer and finder",
   "main": "map.js",
   "repository": {
@@ -14,9 +14,13 @@
     "discovery"
   ],
   "author": "Sérgio Ramos <mail@sergioramos.me>",
-  "license": "FreeBSD",
+  "license": "MIT",
   "dependencies": {
     "axon": "0.3.x",
-    "async": "0.1.x"
+    "async": "0.1.x",
+    "URIjs": "1.7.x"
+  },
+  "devDependencies": {
+    "specced": "0.0.x"
   }
 }

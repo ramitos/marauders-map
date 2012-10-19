@@ -1,2 +1,2 @@
-module.exports.reveal = require('./reveal')
-module.exports.map = require('./seek')
+module.exports.reveal = require('./src/reveal')
+module.exports.map = require('./src/seek')
