@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Marauders-map by ramitos</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Marauders-map</h1>
+        <p>port service announcer and finder</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/ramitos/marauders-map" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ramitos/marauders-map/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ramitos/marauders-map/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>marauders map</h1>
+
+<h2>usage</h2>
+
+<h6>random process</h6>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">reveal</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'marauders-map'</span><span class="p">).</span><span class="nx">reveal</span><span class="p">,</span>
+    <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">),</span>
+    <span class="nx">annport</span> <span class="o">=</span> <span class="mi">4545</span>
+
+<span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'hello from web'</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">().</span><span class="nx">address</span><span class="p">()</span>
+
+<span class="nx">reveal</span><span class="p">(</span><span class="nx">annport</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">'web'</span><span class="p">,</span> <span class="c1">//name of the service</span>
+  <span class="nx">domain</span><span class="o">:</span> <span class="s1">'lvh.me'</span><span class="p">,</span> <span class="c1">//only accepts requests for the domain 'lvh.me'</span>
+  <span class="nx">subdomain</span><span class="o">:</span> <span class="s1">'www'</span><span class="p">,</span> <span class="c1">//only accepts requests for the subdomain 'www'</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">address</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">'/:method/:number'</span><span class="o">:</span> <span class="p">[],</span> <span class="c1">//accepts all methods for this route</span>
+    <span class="s1">'/:method'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'put'</span><span class="p">]</span> <span class="c1">//only accepts PUT methods for this route</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+
+<h6>main process</h6>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">seek</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'marauders-map'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="mi">4545</span><span class="p">).</span><span class="nx">seek</span><span class="p">,</span>
+    <span class="nx">proxy</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http-proxy'</span><span class="p">),</span>
+    <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request'</span><span class="p">)</span>
+
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">proxy</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">seek</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+
+  <span class="nx">proxy</span><span class="p">.</span><span class="nx">proxyRequest</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s1">'localhost'</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="nx">node</span><span class="p">.</span><span class="nx">port</span>
+  <span class="p">})</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
+
+<span class="nx">request</span><span class="p">(</span><span class="s1">'http://www.lvh.me:1337/get/5'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">assert</span><span class="p">(</span><span class="nx">body</span> <span class="o">===</span> <span class="s1">'hello from web'</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+
+<p><em>The main process needs to be running before the random process reveals itself</em></p>
+
+<p><em><a href="http://lvh.me">lvh.me</a> is a domain that points to your local virtual host. nslookup for <a href="http://lvh.me">lvh.me</a> shows the address as 127.0.0.1</em> (<a href="http://pivotallabs.com/users/apeng/blog/articles/1891-standup-10-14-11-lvh-me">http://pivotallabs.com</a>)</p>
+
+<p><em><a href="https://github.com/nodejitsu/node-http-proxy">node-proxy</a> is a full-featured http proxy for node.js</em></p>
+
+<h2>install</h2>
+
+<div class="highlight"><pre>npm install marauders-map
+</pre></div>
+
+<h2>test</h2>
+
+<p><a href="http://travis-ci.org/ramitos/marauders-map"><img src="https://secure.travis-ci.org/ramitos/marauders-map.png" alt="Build Status"></a></p>
+
+<div class="highlight"><pre>npm <span class="nb">test</span>
+</pre></div>
+
+<h2>api</h2>
+
+<h3>map(port)</h3>
+
+<p>This will start a tcp server that will listen to <code>reveal</code> announcements</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'marauders-map'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="mi">4546</span><span class="p">)</span>
+</pre></div>
+
+<p>Returns a map instance that contains the <code>seek</code> function</p>
+
+<h3>reveal(port, node)</h3>
+
+<p><code>port</code>: the port to announce the node. It needs to be the same port used in the map function</p>
+
+<p>Node parameters:</p>
+
+<ul>
+<li>
+<code>name</code> <strong>required</strong>
+</li>
+<li>
+<code>port</code> <strong>required</strong>
+</li>
+<li>
+<code>domain</code> <em>optional</em>
+</li>
+<li>
+<code>subdomain</code> <em>optional</em>
+</li>
+<li>
+<code>routes</code> <em>optional</em>
+</li>
+</ul><h3>seek(http request)</h3>
+
+<p>Return a <code>node</code> if finds one</p>
+
+<h2>interoperability</h2>
+
+<h3><a href="https://github.com/ramitos/turnout">turnout</a></h3>
+
+<p>Only <code>turnout &gt;= 0.0.5</code></p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">reveal</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'marauders-map'</span><span class="p">).</span><span class="nx">reveal</span><span class="p">,</span>
+    <span class="nx">router</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'turnout'</span><span class="p">)(),</span>
+    <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">),</span>
+    <span class="nx">annport</span> <span class="o">=</span> <span class="mi">4545</span>
+
+<span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">router</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">404</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+    <span class="p">})</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">().</span><span class="nx">address</span><span class="p">()</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/todo/:id'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="p">{})</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">'/todo/:id/:state'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="p">{})</span>
+
+<span class="nx">reveal</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">address</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="nx">router</span><span class="p">.</span><span class="nx">routes</span><span class="p">()</span>
+<span class="p">})</span>
+</pre></div>
+
+<p>Even better, with <a href="https://github.com/ramitos/blage">blage</a></p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">reveal</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'marauders-map'</span><span class="p">).</span><span class="nx">reveal</span><span class="p">,</span>
+    <span class="nx">router</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'turnout'</span><span class="p">)(),</span>
+    <span class="nx">blage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'blage'</span><span class="p">),</span>
+    <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">),</span>
+    <span class="nx">annport</span> <span class="o">=</span> <span class="mi">4545</span>
+
+<span class="kd">var</span> <span class="nx">address</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">blage</span><span class="p">(</span><span class="nx">router</span><span class="p">)).</span><span class="nx">listen</span><span class="p">().</span><span class="nx">address</span><span class="p">()</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/todo/:id'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="p">{})</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">'/todo/:id/:state'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="p">{})</span>
+
+<span class="nx">reveal</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">'todo'</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">address</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+  <span class="nx">routes</span><span class="o">:</span> <span class="nx">router</span><span class="p">.</span><span class="nx">routes</span><span class="p">()</span>
+<span class="p">})</span>
+</pre></div>
+
+<h2>examples</h2>
+
+<div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"a"</span><span class="p">,</span>
+    <span class="nt">"subdomain"</span><span class="p">:</span> <span class="s2">"zmeyyjxusi"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">8147</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"c"</span><span class="p">,</span>
+    <span class="nt">"subdomain"</span><span class="p">:</span> <span class="s2">"zmeyyjxusi"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">6078</span><span class="p">,</span>
+    <span class="nt">"routes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"/:method/:number"</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">"/:method"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"put"</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"d"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">5237</span><span class="p">,</span>
+    <span class="nt">"routes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"/:method/:number"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"get"</span><span class="p">,</span> <span class="s2">"post"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+      <span class="nt">"/:method"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"put"</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"e"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">3617</span><span class="p">,</span>
+    <span class="nt">"routes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"/"</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"f"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">9508</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"g"</span><span class="p">,</span>
+    <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">"llvm.me"</span><span class="p">,</span>
+    <span class="nt">"subdomain"</span><span class="p">:</span> <span class="s2">"zmeyyjxusi"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">81471</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"h"</span><span class="p">,</span>
+    <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">"llvm.me"</span><span class="p">,</span>
+    <span class="nt">"subdomain"</span><span class="p">:</span> <span class="s2">"zmeyyjxusi"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">80471</span><span class="p">,</span>
+    <span class="nt">"routes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"/:method/:number"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"get"</span><span class="p">,</span> <span class="s2">"post"</span><span class="p">,</span> <span class="s2">"delete"</span><span class="p">],</span>
+      <span class="nt">"/:method"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"put"</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"l"</span><span class="p">,</span>
+    <span class="nt">"domain"</span><span class="p">:</span> <span class="s2">"llvm.me"</span><span class="p">,</span>
+    <span class="nt">"port"</span><span class="p">:</span> <span class="mi">95081</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<h2>license</h2>
+
+<pre><code>Copyright (C) 2012 Sérgio Ramos &lt;mail@sergioramos.me&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code></pre>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ramitos">ramitos</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
