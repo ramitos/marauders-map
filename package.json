@@ -20,7 +20,8 @@
     "subdomain.js": "0.0.x",
     "domain.js": "0.0.x",
     "waterfall": "0.0.x",
-    "axon": "0.3.x"
+    "axon": "0.3.x",
+    "clone": "0.1.x"
   },
   "devDependencies": {
     "mocha": "1.6.x",
