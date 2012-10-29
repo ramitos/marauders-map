@@ -1,31 +1,26 @@
-var toArray = require('./utils/toarray'),
-    match = require('./utils/match'),
-    regex = require('./utils/regex'),
-    async = require('async'),
+var match = require('./match'),
     axon = require('axon')
 
 module.exports = function (port) {
   var sock = axon.socket('pull')
+  var returns = new Object()
+  var nodes = new Object()
+  
   sock.bind(port)
-  return new seek(sock)
-}
-
-var seek = function (sock) {
-  this.anodes = []
-  this.sock = sock
-  this.nodes = {}
-
+  
   sock.on('message', function (node) {
     node = JSON.parse(node.toString())
-    if(!node.subdomain) node.subdomain = ""
-    this.nodes[node.name] = node
-    delete this.nodes[node.name].name
-    this.anodes = toArray(this.nodes)
-  }.bind(this))
-}
-
-seek.prototype.seek = function (req, callback) {
-  var self = this
+    if(!node.subdomain) node.subdomain = ''
+    if(!node.domain) node.domain = ''
+    node.subdomain = node.subdomain.toLowerCase()
+    node.domain = node.domain.toLowerCase()
+    nodes[node.name] = node
+  })
   
-  match(req, self.anodes, callback)
+  returns.nodes = nodes
+  returns.seek = function (req) {
+    return match(req, nodes)
+  }
+  
+  return returns
 }

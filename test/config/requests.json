@@ -1,4 +1,4 @@
-[  
+[
   {
     "headers": {"host": "B0GXPEPtMJ.lvh.me"},
     "method": "GET",
@@ -106,5 +106,113 @@
     "method": "DELETE",
     "url": "/gaJ/DGAJS/R",
     "expected": 9508
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "GET",
+    "url": "/get/1",
+    "expected": 80471
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "PUT",
+    "url": "/get",
+    "expected": 80471
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "PUT",
+    "url": "/get",
+    "expected": 80471
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "GET",
+    "url": "/get",
+    "expected": 81471
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "GET",
+    "url": "/",
+    "expected": 81471
+  },
+  {
+    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
+    "method": "PUT",
+    "url": "/",
+    "expected": 81471
+  },
+  {
+    "headers": {"host": "zmeyyjxusi.llvm.me"},
+    "method": "GET",
+    "url": "/get/1",
+    "expected": 60781
+  },
+  {
+    "headers": {"host": "zmeyyjxusi.llvm.me"},
+    "method": "PUT",
+    "url": "/get",
+    "expected": 60781
+  },
+  {
+    "headers": {"host": "zmeyyjxusi.llvm.me"},
+    "method": "PUT",
+    "url": "/get",
+    "expected": 60781
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "GET",
+    "url": "/get/1",
+    "expected": 52371
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "POST",
+    "url": "/get/1",
+    "expected": 52371
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "DELETE",
+    "url": "/get/1",
+    "expected": 52371
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "PUT",
+    "url": "/get",
+    "expected": 52371
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "GET",
+    "url": "/",
+    "expected": 36171
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "PUT",
+    "url": "/",
+    "expected": 36171
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "POST",
+    "url": "/",
+    "expected": 36171
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "DELETE",
+    "url": "/",
+    "expected": 36171
+  },
+  {
+    "headers": {"host": "llvm.me"},
+    "method": "DELETE",
+    "url": "/gaJ/DGAJS/R",
+    "expected": 95081
   }
 ]

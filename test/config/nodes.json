@@ -1,42 +1,92 @@
 [
   {
-    "name": "d",
+    "name": "a",
     "subdomain": "B0GXPEPtMJ",
     "port": 8147
   },
   {
-    "name": "h",
+    "name": "b",
     "subdomain": "B0GXPEPtMJ",
-    "routes": [
-      {"/:method/:number": ["get", "post", "delete"]},
-      {"/:method": ["put"]}
-    ],
-    "port": 8047
+    "port": 8047,
+    "routes": {
+      "/:method/:number": ["get", "post", "delete"],
+      "/:method": ["put"]
+    }
   },
   {
-    "name": "f",
+    "name": "c",
     "subdomain": "zmeyyjxusi",
-    "routes": [
-      {"/:method/:number": ["get", "post", "delete"]},
-      {"/:method": ["put"]}
-    ],
-    "port": 6078
+    "port": 6078,
+    "routes": {
+      "/:method/:number": [],
+      "/:method": ["put"]
+    }
+  },
+  {
+    "name": "d",
+    "port": 5237,
+    "routes": {
+      "/:method/:number": ["get", "post", "delete"],
+      "/:method": ["put"]
+    }
   },
   {
     "name": "e",
-    "routes": [
-      {"/:method/:number": ["get", "post", "delete"]},
-      {"/:method": ["put"]}
-    ],
-    "port": 5237
+    "port": 3617,
+    "routes": {
+      "/": []
+    }
   },
   {
-    "name": "t",
-    "routes": ["/"],
-    "port": 3617
+    "name": "f",
+    "port": 9508
   },
   {
     "name": "g",
-    "port": 9508
+    "domain": "llvm.me",
+    "subdomain": "B0GXPEPtMJ",
+    "port": 81471
+  },
+  {
+    "name": "h",
+    "domain": "llvm.me",
+    "subdomain": "B0GXPEPtMJ",
+    "port": 80471,
+    "routes": {
+      "/:method/:number": ["get", "post", "delete"],
+      "/:method": ["put"]
+    }
+  },
+  {
+    "name": "i",
+    "domain": "llvm.me",
+    "subdomain": "zmeyyjxusi",
+    "port": 60781,
+    "routes": {
+      "/:method/:number": [],
+      "/:method": ["put"]
+    }
+  },
+  {
+    "name": "j",
+    "domain": "llvm.me",
+    "port": 52371,
+    "routes": {
+      "/:method/:number": ["get", "post", "delete"],
+      "/:method": ["put"]
+    }
+  },
+  {
+    "name": "k",
+    "domain": "llvm.me",
+    "port": 36171,
+    "routes": {
+      "/": []
+    }
+  },
+  {
+    "name": "l",
+    "domain": "llvm.me",
+    "port": 95081
   }
 ]

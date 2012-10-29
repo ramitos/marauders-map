@@ -1,35 +1,53 @@
-var test = require('specced')(),
-    http = require('http'),
-    path = require('path')
-
+var requests = require('./config/requests.json')
 var ports = require('./config/ports.json')
+var nodes = require('./config/nodes.json')
 
-test.timeout = 10000
+var seek = require('../').map(ports.map).seek,
+    assert = require('chai').assert,
+    reveal = require('../').reveal,
+    crypto = require('crypto')
 
-test.before = function (helpers, callback) {
-  var onRequest = function (req, res) {
-    helpers.req = {url: req.url, headers: {host: req.headers.host}}
-    res.end()
-  }
+before(function (done) {
+  nodes.forEach(function (node) {
+    reveal(ports.map, node)
+  })
   
-  http.createServer(onRequest).listen(ports.server)
-  callback()
-}
-
-test.helpers = {
-  map: require('../').map(ports.map)
-}
-
-test.specs = {
-  reveal: require('./specs/reveal'),
-  seek: require('./specs/seek')
-}
-
-test.run(function (e) {
-  if(e) throw e
-  console.log('something went wrong')
-  process.exit(1)
-}, function () {
-  console.log('all tests passed')
-  process.exit(0)
+  setTimeout(done, 75)
 })
+
+
+suite('requests')
+
+requests.forEach(function (request) {
+  test(crypto.createHash('md5').update(JSON.stringify(request)).digest('hex'), function () {
+    assert(request.expected === seek(request).port)
+  })
+})
+
+
+
+//
+// suite('Array');
+//
+// test('#length', function(){
+//   var arr = [1,2,3];
+//   ok(arr.length == 3);
+// });
+//
+// test('#indexOf()', function(){
+//   var arr = [1,2,3];
+//   ok(arr.indexOf(1) == 0);
+//   ok(arr.indexOf(2) == 1);
+//   ok(arr.indexOf(3) == 2);
+// });
+//
+// suite('String');
+//
+// test('#length', function(){
+//   ok('foo'.length == 3);
+// });
+//
+//
+// var mocha = require('mocha')
+//
+// console.log(mocha);
