@@ -41,7 +41,7 @@ before(function (done) {
     })
   
     throw new Error('the lighthouse hasn\'t received enough nodes')
-  }, 10000)
+  }, 50000)
   
   var clear = function () {
     clearTimeout(tm)
@@ -122,10 +122,10 @@ test('kill and relanuch a random node', function (done) {
         setTimeout(function () {
           assert.property(anns, random)
           done()
-        }, 1500)
-      }, 1500)
-    }, 1500)
-  }, 1500)
+        }, 1000)
+      }, 20000)
+    }, 1000)
+  }, 2000)
 })
 
 
@@ -165,6 +165,6 @@ test('kill master and relaunch it', function (done) {
     setTimeout(function () {
       master.send({channel: 'nodes'})
       setTimeout(relaunched, 1500)
-    }, 3000)
-  }, 1500)
+    }, 7000)
+  }, 2000)
 })

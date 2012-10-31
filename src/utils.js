@@ -16,6 +16,7 @@ Object.keys(interfaces).forEach(function (interface) {
 })
 
 module.exports.address = function (service) {
+  if(!service.addresses.length) return '0.0.0.0'
   var address = service.addresses.filter(function (address) {
     return addresses.indexOf(address) > 0
   })
