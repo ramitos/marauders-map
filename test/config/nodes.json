@@ -1,19 +1,19 @@
-[
-  {
+{
+  "a": {
     "name": "a",
-    "subdomain": "B0GXPEPtMJ",
+    "subdomain": "b0gxpeptmj",
     "port": 8147
   },
-  {
+  "b": {
     "name": "b",
-    "subdomain": "B0GXPEPtMJ",
+    "subdomain": "b0gxpeptmj",
     "port": 8047,
     "routes": {
       "/:method/:number": ["get", "post", "delete"],
       "/:method": ["put"]
     }
   },
-  {
+  "c": {
     "name": "c",
     "subdomain": "zmeyyjxusi",
     "port": 6078,
@@ -22,7 +22,7 @@
       "/:method": ["put"]
     }
   },
-  {
+  "d": {
     "name": "d",
     "port": 5237,
     "routes": {
@@ -30,63 +30,63 @@
       "/:method": ["put"]
     }
   },
-  {
+  "e": {
     "name": "e",
     "port": 3617,
     "routes": {
       "/": []
     }
   },
-  {
+  "f": {
     "name": "f",
     "port": 9508
   },
-  {
+  "g": {
     "name": "g",
     "domain": "llvm.me",
-    "subdomain": "B0GXPEPtMJ",
-    "port": 81471
+    "subdomain": "b0gxpeptmj",
+    "port": 8148
   },
-  {
+  "h": {
     "name": "h",
     "domain": "llvm.me",
-    "subdomain": "B0GXPEPtMJ",
-    "port": 80471,
+    "subdomain": "b0gxpeptmj",
+    "port": 8048,
     "routes": {
       "/:method/:number": ["get", "post", "delete"],
       "/:method": ["put"]
     }
   },
-  {
+  "i": {
     "name": "i",
     "domain": "llvm.me",
     "subdomain": "zmeyyjxusi",
-    "port": 60781,
+    "port": 6079,
     "routes": {
       "/:method/:number": [],
       "/:method": ["put"]
     }
   },
-  {
+  "j": {
     "name": "j",
     "domain": "llvm.me",
-    "port": 52371,
+    "port": 5238,
     "routes": {
       "/:method/:number": ["get", "post", "delete"],
       "/:method": ["put"]
     }
   },
-  {
+  "k": {
     "name": "k",
     "domain": "llvm.me",
-    "port": 36171,
+    "port": 3618,
     "routes": {
       "/": []
     }
   },
-  {
+  "l": {
     "name": "l",
     "domain": "llvm.me",
-    "port": 95081
+    "port": 9509
   }
-]
+}

@@ -1,15 +1,12 @@
-var match = require('./match'),
-    axon = require('axon')
+var lighthouse = require('./lighthouse'),
+    match = require('./match')
 
-module.exports = function (port) {
-  var sock = axon.socket('pull')
-  var returns = new Object()
+module.exports = function () {
+  var farol = lighthouse()
   var nodes = new Object()
   
-  sock.bind(port)
-  
-  sock.on('message', function (node) {
-    node = JSON.parse(node.toString())
+  farol.on('node', function (node) {
+    if(!node.name) return
     if(!node.subdomain) node.subdomain = ''
     if(!node.domain) node.domain = ''
     node.subdomain = node.subdomain.toLowerCase()
@@ -17,10 +14,14 @@ module.exports = function (port) {
     nodes[node.name] = node
   })
   
-  returns.nodes = nodes
-  returns.seek = function (req) {
+  farol.on('!node', function (name) {
+    delete nodes[name]
+  })
+  
+  var returns = function (req) {
     return match(req, nodes)
   }
   
+  returns.nodes = nodes
   return returns
 }

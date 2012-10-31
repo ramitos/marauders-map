@@ -13,12 +13,6 @@
   },
   {
     "headers": {"host": "B0GXPEPtMJ.lvh.me"},
-    "method": "PUT",
-    "url": "/get",
-    "expected": 8047
-  },
-  {
-    "headers": {"host": "B0GXPEPtMJ.lvh.me"},
     "method": "GET",
     "url": "/get",
     "expected": 8147
@@ -39,12 +33,6 @@
     "headers": {"host": "zmeyyjxusi.lvh.me"},
     "method": "GET",
     "url": "/get/1",
-    "expected": 6078
-  },
-  {
-    "headers": {"host": "zmeyyjxusi.lvh.me"},
-    "method": "PUT",
-    "url": "/get",
     "expected": 6078
   },
   {
@@ -111,108 +99,96 @@
     "headers": {"host": "B0GXPEPtMJ.llvm.me"},
     "method": "GET",
     "url": "/get/1",
-    "expected": 80471
+    "expected": 8048
   },
   {
     "headers": {"host": "B0GXPEPtMJ.llvm.me"},
     "method": "PUT",
     "url": "/get",
-    "expected": 80471
-  },
-  {
-    "headers": {"host": "B0GXPEPtMJ.llvm.me"},
-    "method": "PUT",
-    "url": "/get",
-    "expected": 80471
+    "expected": 8048
   },
   {
     "headers": {"host": "B0GXPEPtMJ.llvm.me"},
     "method": "GET",
     "url": "/get",
-    "expected": 81471
+    "expected": 8148
   },
   {
     "headers": {"host": "B0GXPEPtMJ.llvm.me"},
     "method": "GET",
     "url": "/",
-    "expected": 81471
+    "expected": 8148
   },
   {
     "headers": {"host": "B0GXPEPtMJ.llvm.me"},
     "method": "PUT",
     "url": "/",
-    "expected": 81471
+    "expected": 8148
   },
   {
     "headers": {"host": "zmeyyjxusi.llvm.me"},
     "method": "GET",
     "url": "/get/1",
-    "expected": 60781
+    "expected": 6079
   },
   {
     "headers": {"host": "zmeyyjxusi.llvm.me"},
     "method": "PUT",
     "url": "/get",
-    "expected": 60781
-  },
-  {
-    "headers": {"host": "zmeyyjxusi.llvm.me"},
-    "method": "PUT",
-    "url": "/get",
-    "expected": 60781
+    "expected": 6079
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "GET",
     "url": "/get/1",
-    "expected": 52371
+    "expected": 5238
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "POST",
     "url": "/get/1",
-    "expected": 52371
+    "expected": 5238
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "DELETE",
     "url": "/get/1",
-    "expected": 52371
+    "expected": 5238
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "PUT",
     "url": "/get",
-    "expected": 52371
+    "expected": 5238
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "GET",
     "url": "/",
-    "expected": 36171
+    "expected": 3618
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "PUT",
     "url": "/",
-    "expected": 36171
+    "expected": 3618
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "POST",
     "url": "/",
-    "expected": 36171
+    "expected": 3618
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "DELETE",
     "url": "/",
-    "expected": 36171
+    "expected": 3618
   },
   {
     "headers": {"host": "llvm.me"},
     "method": "DELETE",
     "url": "/gaJ/DGAJS/R",
-    "expected": 95081
+    "expected": 9509
   }
 ]
