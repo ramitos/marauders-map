@@ -66,10 +66,10 @@ npm test
 
 ## api
 
-### map(port)
+### map()
 
 ```js
-var map = require('marauders-map').map(4546)
+var seek = require('marauders-map').map()
 ```
 
 Returns a function to seek nodes
