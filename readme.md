@@ -54,7 +54,7 @@ request('http://www.lvh.me:1337/get/5', function (e, res, body) {
 npm install marauders-map
 ```
 
-## test [![Build Status](https://secure.travis-ci.org/ramitos/marauders-map.png)](http://travis-ci.org/ramitos/marauders-map)
+## test
 ```bash
 npm test
 ```
