@@ -1,6 +1,6 @@
 {
   "name": "marauders-map",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "service port announcer and finder",
   "author": "Sérgio Ramos <mail@sergioramos.me>",
   "main": "src/map.js",
