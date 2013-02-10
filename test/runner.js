@@ -15,11 +15,16 @@ var child_process = require('child_process'),
     crypto = require('crypto')
 
 before(function (done) {
-  processes['master'] = child_process.fork(interpolate('%s/nodes/%s.js', __dirname, 'master'))
+  processes['master'] = child_process.fork(interpolate('%s/nodes/%s.js', __dirname, 'master'), {
+    env: process.env
+  })
+  
   master = processes['master']
   
   Object.keys(nodes).forEach(function (node) {
-    processes[node] = child_process.fork(interpolate('%s/nodes/%s.js', __dirname, node))
+    processes[node] = child_process.fork(interpolate('%s/nodes/%s.js', __dirname, node), {
+      env: process.env
+    })
   })
   
   messages.nodes = function (m) {

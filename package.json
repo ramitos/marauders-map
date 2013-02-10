@@ -1,6 +1,6 @@
 {
   "name": "marauders-map",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "service port announcer and finder",
   "author": "Sérgio Ramos <mail@sergioramos.me>",
   "main": "src/map.js",
@@ -21,7 +21,7 @@
     "domain.js": "0.0.x",
     "waterfall": "0.0.x",
     "clone": "0.1.x",
-    "mdns": "0.0.x"
+    "mdns": "1.1.x"
   },
   "devDependencies": {
     "mocha": "1.6.x",

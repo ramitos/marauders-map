@@ -1,6 +1,8 @@
+if(process.env['MP_COV']) var seek = require('../../src-cov/map').map()
+else var seek = require('../..').map()
+
 require('fs').writeFile(__dirname + '/master.pid', process.pid)
 
-var seek = require('../..').map()
 var messages = new Object()
 
 messages.seek = function (m) {
